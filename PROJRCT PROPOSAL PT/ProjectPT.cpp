@@ -1,13 +1,3 @@
-/*
-============================================================================
-Filename    : DiskSchedulingSimulator.cpp
-Project     : PT 101 Final Project - Topic 4: Disk Scheduling
-University  : Batangas State University, Alangilan Campus
-Course      : Platform Technologies (PT 101)
-Description : Simulates FCFS, SSTF, and SCAN disk scheduling algorithms.
-              Calculates total head movement and shows detailed results.
-============================================================================
-*/
 
 #include <iostream>
 #include <vector>
@@ -18,7 +8,6 @@ Description : Simulates FCFS, SSTF, and SCAN disk scheduling algorithms.
 
 using namespace std;
 
-// ====================== DATA STRUCTURES ======================
 struct DiskData {
     int initialHead;
     vector<int> requests;
@@ -34,7 +23,6 @@ struct AlgorithmResult {
     int totalMovement;
 };
 
-// ====================== HELPER FUNCTIONS ======================
 int validateInteger(string prompt, int minVal, int maxVal) {
     int value;
     while (true) {
@@ -90,7 +78,6 @@ void printResult(const AlgorithmResult &res) {
     cout << "Total Movement  : " << res.totalMovement << " cylinders\n";
 }
 
-// ====================== ALGORITHM 1: FCFS ======================
 AlgorithmResult calculateFCFS(const DiskData &data) {
     AlgorithmResult result;
     result.name = "FCFS (First-Come, First-Served)";
@@ -108,7 +95,6 @@ AlgorithmResult calculateFCFS(const DiskData &data) {
     return result;
 }
 
-// ====================== ALGORITHM 2: SSTF ======================
 AlgorithmResult calculateSSTF(const DiskData &data) {
     AlgorithmResult result;
     result.name = "SSTF (Shortest Seek Time First)";
@@ -144,7 +130,6 @@ AlgorithmResult calculateSSTF(const DiskData &data) {
     return result;
 }
 
-// ====================== ALGORITHM 3: SCAN ======================
 AlgorithmResult calculateSCAN(const DiskData &data) {
     AlgorithmResult result;
     result.name = "SCAN (Elevator) - Direction: " + data.initialDirection;
@@ -203,7 +188,6 @@ AlgorithmResult calculateSCAN(const DiskData &data) {
     return result;
 }
 
-// ====================== COMPARISON SUMMARY ======================
 void printComparison(const AlgorithmResult &fcfs, const AlgorithmResult &sstf, const AlgorithmResult &scan) {
     printHeader("COMPARISON SUMMARY");
     cout << left << setw(35) << "ALGORITHM" << setw(20) << "TOTAL HEAD MOVEMENT\n";
@@ -221,7 +205,6 @@ void printComparison(const AlgorithmResult &fcfs, const AlgorithmResult &sstf, c
     cout << " (Least Head Movement)\n";
 }
 
-// ====================== MAIN PROGRAM ======================
 int main() {
     cout << "=================================================================\n";
     cout << "         DISK SCHEDULING SIMULATOR - FCFS | SSTF | SCAN\n";
